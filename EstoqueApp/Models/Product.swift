@@ -23,6 +23,14 @@ struct Product {
             return "quilogramas"
         }
     }
+    
+    mutating func increaseQuantity() {
+        self.quantity += 1
+    }
+    
+    mutating func decreaseQuantity() {
+        self.quantity -= 1
+    }
 }
 
 enum UnityMeasure {

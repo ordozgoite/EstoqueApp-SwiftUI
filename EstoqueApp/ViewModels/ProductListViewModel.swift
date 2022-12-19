@@ -48,4 +48,16 @@ struct ProductViewModel {
     var unityMeasure: UnityMeasure {
         product.unityMeasure
     }
+    
+    var unityText: String {
+        product.unityText
+    }
+    
+    mutating func increaseQuantity() {
+        product.increaseQuantity()
+    }
+    
+    mutating func decreaseQuantity() {
+        product.decreaseQuantity()
+    }
 }

@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct AddProductView: View {
+struct AddProductScreen: View {
     var body: some View {
         Text("AddProductView")
     }
 }
 
-struct AddProductView_Previews: PreviewProvider {
+struct AddProductScreen_Previews: PreviewProvider {
     static var previews: some View {
-        AddProductView()
+        AddProductScreen()
     }
 }

@@ -9,27 +9,28 @@ import SwiftUI
 
 struct ProductListView: View {
     
-    @ObservedObject private var productListVM = ProductListViewModel()
+    @EnvironmentObject var store: Store
+    @State private var addViewPresented: Bool = false
     
     var body: some View {
         NavigationStack {
             VStack {
                 List {
-                    ForEach(0 ..< productListVM.products.count, id: \.self) { index in
-                        ProductCell(product: productListVM.products[index])
+                    ForEach($store.productsList) { $product in
+                        ProductCell(product: product)
                     }
                 }
             }
-            .onAppear {
-                productListVM.getAllProducts()
-            }
             .toolbar {
-                NavigationLink(destination: AddProductScreen()) {
-                    Image(systemName: "plus")
-                        .foregroundColor(.blue)
-                }
+                Image(systemName: "plus")
+                    .foregroundColor(.blue)
+                    .onTapGesture {
+                        addViewPresented = true
+                    }
             }
-            
+            .sheet(isPresented: $addViewPresented, content: {
+                AddProductScreen().environmentObject(store)
+            })
             .navigationTitle("Produtos")
         }
     }
@@ -38,5 +39,6 @@ struct ProductListView: View {
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
         ProductListView()
+            .environmentObject(Store())
     }
 }

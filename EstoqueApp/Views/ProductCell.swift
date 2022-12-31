@@ -13,24 +13,28 @@ struct ProductCell: View {
     
     var body: some View {
         HStack {
+            // IMAGE
             Image(uiImage: (product.image ?? UIImage(named: "no_image"))!)
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 100, height: 100)
+                .cornerRadius(8)
             
             VStack(alignment: .leading) {
+                // NAME
                 Text(product.name)
+                // QUANTITY
                 Text("\(product.quantity) \(product.unityText)")
                     .padding(.top, 5)
             }
             
             Spacer()
-            
+            // STEPPER
             Stepper("") {
                 product.increaseQuantity()
             } onDecrement: {
                 product.decreaseQuantity()
             }
-
         }
     }
 }

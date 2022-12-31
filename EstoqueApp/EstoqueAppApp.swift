@@ -11,7 +11,7 @@ import SwiftUI
 struct EstoqueAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ProductListView()
+            ProductListView().environmentObject(Store())
         }
     }
 }

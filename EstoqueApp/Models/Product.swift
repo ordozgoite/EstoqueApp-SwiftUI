@@ -33,8 +33,19 @@ struct Product {
     }
 }
 
-enum UnityMeasure {
+enum UnityMeasure: CaseIterable {
     case kilograms
     case meters
     case units
+    
+    var name: String {
+        switch self {
+        case .units:
+            return "unidades"
+        case .meters:
+            return "metros"
+        case .kilograms:
+            return "quilogramas"
+        }
+    }
 }

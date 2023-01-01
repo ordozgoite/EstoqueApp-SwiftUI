@@ -10,6 +10,14 @@ import SwiftUI
 struct ProductCell: View {
     
     @State var product: ProductViewModel
+    @State private var textRect = CGRect()
+    @FocusState var isInputActive: Bool
+    
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
     
     var body: some View {
         HStack {
@@ -17,15 +25,29 @@ struct ProductCell: View {
             Image(uiImage: (product.image ?? UIImage(named: "no_image"))!)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 100, height: 100)
+                .frame(width: 64, height: 64)
                 .cornerRadius(8)
             
             VStack(alignment: .leading) {
                 // NAME
                 Text(product.name)
+                    .font(.title3)
+                    .bold()
                 // QUANTITY
-                Text("\(product.quantity) \(product.unityText)")
-                    .padding(.top, 5)
+                HStack {
+                    TextField("", value: $product.product.quantity, formatter: formatter)
+                        .fixedSize()
+                        .focused($isInputActive)
+                        .keyboardType(.numberPad)
+                    
+                    Text(product.unityText)
+                    
+                    if isInputActive {
+                        Button("OK") {
+                            isInputActive = false
+                        }
+                    }
+                }
             }
             
             Spacer()
@@ -35,12 +57,13 @@ struct ProductCell: View {
             } onDecrement: {
                 product.decreaseQuantity()
             }
+            .fixedSize()
         }
     }
 }
 
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCell(product: ProductViewModel(product: Product(name: "Coca-Cola Zero", image: UIImage(named: "coke"), quantity: 10, unityMeasure: .units)))
+        ProductCell(product: ProductViewModel(product: Product(name: "Coca-Cola Zero", image: UIImage(named: "coke"), quantity: 8, unityMeasure: .meters)))
     }
 }

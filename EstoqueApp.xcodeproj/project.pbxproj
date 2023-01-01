@@ -20,6 +20,7 @@
 		EDD040B8295DD82500B425C3 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD040B7295DD82500B425C3 /* View+Extensions.swift */; };
 		EDE1E60029501335008C786F /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E5FF29501335008C786F /* ProductCell.swift */; };
 		EDE1E6032950A930008C786F /* AddProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE1E6022950A930008C786F /* AddProductScreen.swift */; };
+		EDEE6B512960FB6C00BC8C74 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEE6B502960FB6C00BC8C74 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		EDD040B7295DD82500B425C3 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		EDE1E5FF29501335008C786F /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		EDE1E6022950A930008C786F /* AddProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductScreen.swift; sourceTree = "<group>"; };
+		EDEE6B502960FB6C00BC8C74 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EDEE6B52296111DB00BC8C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,7 @@
 		ED139084294A615C0077D852 /* EstoqueApp */ = {
 			isa = PBXGroup;
 			children = (
+				EDEE6B52296111DB00BC8C74 /* Info.plist */,
 				EDD040B6295DD80E00B425C3 /* Extensions */,
 				EDD040AF295D1DB500B425C3 /* Global State */,
 				ED139093294A61820077D852 /* Models */,
@@ -113,6 +117,7 @@
 			children = (
 				ED13909A294A93D50077D852 /* ProductListView.swift */,
 				EDE1E5FF29501335008C786F /* ProductCell.swift */,
+				EDEE6B502960FB6C00BC8C74 /* ImagePicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				EDE1E60029501335008C786F /* ProductCell.swift in Sources */,
 				EDE1E6032950A930008C786F /* AddProductScreen.swift in Sources */,
 				ED139095294A61980077D852 /* Product.swift in Sources */,
+				EDEE6B512960FB6C00BC8C74 /* ImagePicker.swift in Sources */,
 				EDD040B5295DD25400B425C3 /* AddProductViewModel.swift in Sources */,
 				ED13909B294A93D50077D852 /* ProductListView.swift in Sources */,
 			);
@@ -354,6 +360,8 @@
 				DEVELOPMENT_TEAM = 3945C3P68V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EstoqueApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Esta funcionalidade precisa acessar a sua câmera pra funcionar.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -383,6 +391,8 @@
 				DEVELOPMENT_TEAM = 3945C3P68V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EstoqueApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Esta funcionalidade precisa acessar a sua câmera pra funcionar.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

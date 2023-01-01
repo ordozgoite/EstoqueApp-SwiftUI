@@ -13,8 +13,12 @@ struct AddProductScreen: View {
     @ObservedObject private var addProductVM = AddProductViewModel()
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var store: Store
-    @State var selectedItems: [PhotosPickerItem] = []
-    @State var data: Data?
+    
+    @State private var showSheet: Bool = false
+    @State private var showImagePicker: Bool = false
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    
+    
     
     var body: some View {
         VStack {
@@ -35,44 +39,35 @@ struct AddProductScreen: View {
                     }
                 }
                 
-                Section("Imagem") {
-                    VStack {
-                        PhotosPicker(
-                            selection: $selectedItems,
-                            maxSelectionCount: 1,
-                            matching: .images
-                        ) {
-                            HStack {
-                                Text("Escolha uma imagem")
-                                    .foregroundColor(.black)
-                                Spacer()
-                                if let data = data, let uiimage = UIImage(data: data) {
-                                    Image(uiImage: uiimage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 32, height: 32)
-                                }
-                                Image(systemName: "camera")
-                            }
-                    }
-                        .onChange(of: selectedItems) { newValue in
-                            guard let item = selectedItems.first else { return }
-                            item.loadTransferable(type: Data.self) { result in
-                                switch result {
-                                case .success(let data):
-                                    if let data = data {
-                                        self.data = data
-                                        DispatchQueue.main.async {
-                                            addProductVM.productImage = UIImage(data: data)!
-                                        }
-                                    } else {
-                                        print("Data is nil")
-                                    }
-                                case .failure(let error):
-                                    fatalError(error.localizedDescription)
-                                }
-                            }
+                Section("IMAGEM") {
+                    HStack {
+                        Text("Adicionar Imagem")
+                        Spacer()
+                        if let image = addProductVM.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
                         }
+                        
+                        // CAMERA BUTTON
+                        Button {
+                            showSheet = true
+                        } label: {
+                            Image(systemName: "camera")
+                        }
+                        .confirmationDialog("Select Photo", isPresented: $showSheet) {
+                            Button("Photo Library") {
+                                self.showImagePicker = true
+                                self.sourceType = .photoLibrary
+                            }
+                            Button("Camera") {
+                                self.showImagePicker = true
+                                self.sourceType = .camera
+                            }
+                            Button("Cancel", role: .cancel, action: {})
+                        }
+
                     }
                 }
                 
@@ -91,6 +86,9 @@ struct AddProductScreen: View {
                 .disabled(!addProductVM.isValid())
             }
         }
+        .sheet(isPresented: $showImagePicker, content: {
+            ImagePicker(image: $addProductVM.image, isShown: $showImagePicker, sourceType: self.sourceType)
+        })
         // NAVIGATION VIEW
         .navigationTitle("Adicionar Produto")
         .toolbar {

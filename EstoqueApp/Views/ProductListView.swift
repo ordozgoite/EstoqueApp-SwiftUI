@@ -11,13 +11,20 @@ struct ProductListView: View {
     
     @EnvironmentObject var store: Store
     @State private var addViewPresented: Bool = false
+    @State private var searchText = ""
     
     var body: some View {
         NavigationStack {
             VStack {
                 List {
                     ForEach($store.productsList) { $product in
-                        ProductCell(product: product)
+                        if searchText == "" {
+                            ProductCell(product: product)
+                        } else {
+                            if product.name.contains(searchText) {
+                                ProductCell(product: product)
+                            }
+                        }
                     }
                 }
             }
@@ -33,6 +40,7 @@ struct ProductListView: View {
             })
             .navigationTitle("Produtos")
         }
+        .searchable(text: $searchText, prompt: "Nome do produto")
     }
 }
 

@@ -16,11 +16,11 @@ struct Product {
     var unityText: String {
         switch unityMeasure {
         case .units:
-            return "unidades"
+            return "un."
         case .meters:
-            return "metros"
+            return "m"
         case .kilograms:
-            return "quilogramas"
+            return "kg"
         }
     }
     

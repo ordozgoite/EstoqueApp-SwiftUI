@@ -21,7 +21,8 @@ struct EstoqueAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ProductListView().environmentObject(Store())
+            LoginScreen()
+//            ProductListView().environmentObject(Store())
         }
     }
 }

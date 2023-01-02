@@ -30,6 +30,9 @@
 		EDEE6B632963101000BC8C74 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EDEE6B622963101000BC8C74 /* FirebaseFirestoreSwift */; };
 		EDEE6B652963101000BC8C74 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EDEE6B642963101000BC8C74 /* FirebaseStorage */; };
 		EDEE6B672963101000BC8C74 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EDEE6B662963101000BC8C74 /* FirebaseStorageCombine-Community */; };
+		EDEE6B6A2963129D00BC8C74 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEE6B692963129D00BC8C74 /* WebServices.swift */; };
+		EDEE6B6D2963314800BC8C74 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEE6B6C2963314800BC8C74 /* LoginScreen.swift */; };
+		EDEE6B6F296331FE00BC8C74 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEE6B6E296331FE00BC8C74 /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,10 @@
 		EDEE6B502960FB6C00BC8C74 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EDEE6B52296111DB00BC8C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EDEE6B5329630F2D00BC8C74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDEE6B692963129D00BC8C74 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
+		EDEE6B6B2963308600BC8C74 /* EstoqueApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EstoqueApp.entitlements; sourceTree = "<group>"; };
+		EDEE6B6C2963314800BC8C74 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		EDEE6B6E296331FE00BC8C74 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +97,9 @@
 		ED139084294A615C0077D852 /* EstoqueApp */ = {
 			isa = PBXGroup;
 			children = (
+				EDEE6B6B2963308600BC8C74 /* EstoqueApp.entitlements */,
 				EDEE6B52296111DB00BC8C74 /* Info.plist */,
+				EDEE6B682963126A00BC8C74 /* Services */,
 				EDD040B6295DD80E00B425C3 /* Extensions */,
 				EDD040AF295D1DB500B425C3 /* Global State */,
 				ED139093294A61820077D852 /* Models */,
@@ -124,6 +133,7 @@
 		ED139096294A62540077D852 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				EDEE6B6E296331FE00BC8C74 /* AuthenticationViewModel.swift */,
 				ED139097294A626D0077D852 /* ProductViewModel.swift */,
 				EDD040B4295DD25400B425C3 /* AddProductViewModel.swift */,
 			);
@@ -159,10 +169,19 @@
 		EDE1E6012950A8FA008C786F /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				EDEE6B6C2963314800BC8C74 /* LoginScreen.swift */,
 				EDE1E6022950A930008C786F /* AddProductScreen.swift */,
 				EDD040B2295D1E7600B425C3 /* ProductListScreen.swift */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		EDEE6B682963126A00BC8C74 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EDEE6B692963129D00BC8C74 /* WebServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,10 +269,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDEE6B6D2963314800BC8C74 /* LoginScreen.swift in Sources */,
 				ED139086294A615C0077D852 /* EstoqueAppApp.swift in Sources */,
 				EDD040B8295DD82500B425C3 /* View+Extensions.swift in Sources */,
+				EDEE6B6A2963129D00BC8C74 /* WebServices.swift in Sources */,
 				ED139098294A626D0077D852 /* ProductViewModel.swift in Sources */,
 				EDD040B1295D1DC700B425C3 /* Store.swift in Sources */,
+				EDEE6B6F296331FE00BC8C74 /* AuthenticationViewModel.swift in Sources */,
 				EDD040B3295D1E7600B425C3 /* ProductListScreen.swift in Sources */,
 				EDE1E60029501335008C786F /* ProductCell.swift in Sources */,
 				EDE1E6032950A930008C786F /* AddProductScreen.swift in Sources */,
@@ -386,6 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EstoqueApp/EstoqueApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EstoqueApp/Preview Content\"";
@@ -417,6 +440,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EstoqueApp/EstoqueApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EstoqueApp/Preview Content\"";
